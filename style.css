@@ -66,6 +66,13 @@ h1 {
     animation: wiggle 2s ease-in-out infinite;
 }
 
+.subtitle {
+    font-size: 1.8rem;
+    color: #d63384;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
 @keyframes wiggle {
     0%, 100% { transform: rotate(-1deg); }
     50% { transform: rotate(1deg); }
@@ -203,4 +210,36 @@ h1 {
 .yes-container #cat-gif {
     width: 260px;
     height: 260px;
+}
+
+#love-btn {
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+    margin-top: 20px;
+}
+
+#love-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(255, 20, 147, 0.5);
+}
+
+#love-btn:active {
+    transform: scale(0.96);
+}
+
+.love-declaration {
+    font-size: 3.2rem;
+    color: #ff1493;
+    font-weight: 900;
+    margin-top: 30px;
+    animation: fadeIn 0.8s ease both;
 }

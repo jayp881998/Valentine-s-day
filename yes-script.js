@@ -11,6 +11,15 @@ window.addEventListener('load', () => {
     document.getElementById('music-toggle').textContent = '🔊'
 })
 
+function showLoveMessage() {
+    const loveMsg = document.getElementById('love-message')
+    loveMsg.textContent = 'I love you Bettu! 💖 '
+    loveMsg.style.display = 'block'
+    const loveBtn = document.getElementById('love-btn')
+    loveBtn.style.display = 'none'
+    launchConfetti()
+}
+
 function launchConfetti() {
     const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#ffb3c1', '#ff0000', '#ff6347', '#fff', '#ffdf00']
     const duration = 6000

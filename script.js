@@ -6,25 +6,34 @@ const gifStages = [
     "https://media1.tenor.com/m/WGfra-Y_Ke0AAAAd/chiikawa-sad.gif",       // 4 sadder
     "https://media.tenor.com/CivArbX7NzQAAAAj/somsom1012.gif",             // 5 devastated
     "https://media.tenor.com/5_tv1HquZlcAAAAj/chiikawa.gif",               // 6 very devastated
-    "https://media1.tenor.com/m/uDugCXK4vI4AAAAC/chiikawa-hachiware.gif"  // 7 crying runaway
+    "https://media1.tenor.com/m/uDugCXK4vI4AAAAC/chiikawa-hachiware.gif",  // 7 crying runaway
+    "https://media.tenor.com/yhOYoFN_WAkAAAAj/amor.gif", // 8 last chance - crying but still cute
+    "https://media.tenor.com/pj-WvOM7W2oAAAAi/mocha-and.gif", // 9 last chance - crying but still cute
+    "https://media.tenor.com/oaymJ_bC4cIAAAAi/mochi-cat-laughing-cat.gif" // 10 hahahah you can't catch me
 ]
 
 const noMessages = [
     "No",
     "Are you positive? 🤔",
     "Pookie please... 🥺",
-    "If you say no, I will be really sad...",
-    "I will be very sad... 😢",
-    "Please??? 💔",
-    "Don't do this to me...",
+    "Dikka please... 😢",
+    "Bettu... I thought we were special... 💔",
+    "Bettu tu na padis to.....I will be really sad...",
+    "I will be very sad...... mar dikka😢",
+    "Bettu Please??? 💔",
+    "Don't do this to me.....my cutie pie... 😭",
     "Last chance! 😭",
-    "You can't catch me anyway 😜"
+    "Hahahahah......You can't catch me anyway 😜"
 ]
 
 const yesTeasePokes = [
     "try saying no first... I bet you want to know what happens 😏",
     "go on, hit no... just once 👀",
     "you're missing out 😈",
+    "Joto Kahara su thy 6...",
+    "bs aavu krvnu bettu....",
+    "vahhh joto khara bettu No bi nai keti.....vahhh....ek var try to kr",
+    "khub khub dhaynayabad bettu....I know you want to say no... but you can't resist the temptation of clicking yes...",
     "click no, I dare you 😏"
 ]
 
@@ -91,9 +100,10 @@ function handleNoClick() {
     const msgIndex = Math.min(noClickCount, noMessages.length - 1)
     noBtn.textContent = noMessages[msgIndex]
 
-    // Grow the Yes button bigger each time
-    const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize)
-    yesBtn.style.fontSize = `${currentSize * 1.35}px`
+    // Grow the Yes button bigger each time (linear growth based on clicks)
+    const baseFontSize = 1.6; // Initial size from CSS
+    const newSize = Math.min(baseFontSize + (noClickCount * 0.4), 5.5); // Grow 0.4rem per click, cap at 5.5rem
+    yesBtn.style.fontSize = `${newSize}rem`
     const padY = Math.min(18 + noClickCount * 5, 60)
     const padX = Math.min(45 + noClickCount * 10, 120)
     yesBtn.style.padding = `${padY}px ${padX}px`
@@ -108,8 +118,8 @@ function handleNoClick() {
     const gifIndex = Math.min(noClickCount, gifStages.length - 1)
     swapGif(gifStages[gifIndex])
 
-    // Runaway starts at click 5
-    if (noClickCount >= 5 && !runawayEnabled) {
+    // Runaway starts at click 10 (Hahahah you can't catch me)
+    if (noClickCount >= 10 && !runawayEnabled) {
         enableRunaway()
         runawayEnabled = true
     }
